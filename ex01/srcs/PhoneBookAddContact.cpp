@@ -61,7 +61,7 @@ std::string PhoneBook::getValidInputNumber(const std::string& fieldName)
 
 int ft_valid(Contact newContact)
 {
-    if (newContact.firstName.empty() || newContact.lastName.empty() || newContact.nickname.empty() || newContact.phoneNumber.empty() || newContact.darkestSecret.empty())
+    if (newContact.getFirstName().empty() || newContact.getLastName().empty() || newContact.getNickname().empty() || newContact.getPhoneNumber().empty() || newContact.getDarkestSecret().empty())
         return 0;
     return 1;
 }
@@ -70,11 +70,11 @@ Contact PhoneBook::createNewContact()
 {
     Contact newContact;
     
-    newContact.firstName = getValidInput("first name");
-    newContact.lastName = getValidInput("last name");
-    newContact.nickname = getValidInput("nickname");
-    newContact.phoneNumber = getValidInputNumber("phone number");
-    newContact.darkestSecret = getValidInput("darkest secret");
+    newContact.setFirstName(getValidInput("first name"));
+    newContact.setLastName(getValidInput("last name"));
+    newContact.setNickname(getValidInput("nickname"));
+    newContact.setPhoneNumber(getValidInputNumber("phone number"));
+    newContact.setDarkestSecret(getValidInput("darkest secret"));
     
     return newContact;
 }
@@ -98,5 +98,3 @@ void PhoneBook::addContact(void)
         exit(1);
     }
 }
-
-
