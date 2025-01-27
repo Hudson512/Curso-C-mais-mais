@@ -52,9 +52,9 @@ void PhoneBook::searchContact(void)
 	for (int i = 0; i < contactsCount; i++)
 	{
 		std::cout << std::setw(10) << i << "|"
-					<< std::setw(10) << truncateString(contacts[i].firstName) << "|"
-					<< std::setw(10) << truncateString(contacts[i].lastName) << "|"
-					<< std::setw(10) << truncateString(contacts[i].nickname) << std::endl;
+					<< std::setw(10) << truncateString(contacts[i].getFirstName()) << "|"
+					<< std::setw(10) << truncateString(contacts[i].getLastName()) << "|"
+					<< std::setw(10) << truncateString(contacts[i].getNickname()) << std::endl;
 	}
 	
 	while (1)
@@ -79,11 +79,11 @@ void PhoneBook::searchContact(void)
     	}
 		else if (index >= 0 && index < contactsCount)
 		{
-			std::cout << "First Name: " << contacts[index].firstName << std::endl;
-			std::cout << "Last Name: " << contacts[index].lastName << std::endl;
-			std::cout << "Nickname: " << contacts[index].nickname << std::endl;
-			std::cout << "Number: " << contacts[index].phoneNumber << std::endl;
-			std::cout << "Darkest Secret: " << contacts[index].darkestSecret << std::endl;
+			std::cout << "First Name: " << contacts[index].getFirstName() << std::endl;
+			std::cout << "Last Name: " << contacts[index].getLastName() << std::endl;
+			std::cout << "Nickname: " << contacts[index].getNickname() << std::endl;
+			std::cout << "Number: " << contacts[index].getPhoneNumber() << std::endl;
+			std::cout << "Darkest Secret: " << contacts[index].getDarkestSecret() << std::endl;
 		}
 	}
 }
