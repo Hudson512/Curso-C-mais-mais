@@ -5,34 +5,35 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/01/13 09:42:07 by hmateque          #+#    #+#              #
-#    Updated: 2025/01/13 12:00:27 by hmateque         ###   ########.fr        #
+#    Created: 2025/01/15 15:41:44 by hmateque          #+#    #+#              #
+#    Updated: 2025/01/28 08:46:24 by hmateque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = PhoneBook
 CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
-RM = rm -f
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = megaphone.cpp
+SRC =	srcs/main.cpp \
+		srcs/PhoneBookAddContact.cpp \
+		srcs/ContactMethods.cpp \
+		srcs/PhoneBookAux.cpp \
+
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	#mkdir -p exec
-	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJ)
+	rm -f $(OBJ)
 
 fclean: clean
-	$(RM) -r exec
-	$(RM) $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
