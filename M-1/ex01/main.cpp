@@ -6,14 +6,14 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 09:35:47 by hmateque          #+#    #+#             */
-/*   Updated: 2025/01/29 12:09:22 by hmateque         ###   ########.fr       */
+/*   Updated: 2025/01/29 12:13:05 by hmateque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
 
-int main()
+int main(void)
 {
     std::string name;
     do
@@ -27,9 +27,9 @@ int main()
 		}
     } while (name.empty());
 
-    Zombie *zombie = newZombie(name);
-    zombie->announce();
-    randomChump("Random");
-    delete zombie;
+    Zombie *zombie = zombieHorde(10, name);
+    for (size_t i = 0; i < 10; i++)
+        zombie[i].announce();
+    delete [] zombie;
     return (0);
 }
