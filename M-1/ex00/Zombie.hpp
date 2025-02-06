@@ -6,7 +6,7 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 09:09:51 by hmateque          #+#    #+#             */
-/*   Updated: 2025/01/28 09:53:53 by hmateque         ###   ########.fr       */
+/*   Updated: 2025/02/06 08:29:48 by hmateque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,9 @@ class Zombie
         std::string name;
 
     public:
-        Zombie();
+        Zombie(std::string name);
         ~Zombie();
         void announce(void);
-        void setName(std::string name);
-
 };
 
 Zombie* newZombie(std::string name);

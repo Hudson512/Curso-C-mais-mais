@@ -47,13 +47,13 @@ int main(int ac, char **av)
         std::cout << "Error: Empty strings" << std::endl;
         return 1;
     }
-    std::ifstream file(filename);
+    std::ifstream file(filename.c_str());
     if (!file.is_open())
     {
         std::cout << "Error: File not found" << std::endl;
         return 1;
     }
-    std::ofstream file_replace(filename + ".replace");
+    std::ofstream file_replace((filename + ".replace").c_str());
     if (!file_replace.is_open())
     {
         std::cout << "Error: File not created" << std::endl;
@@ -74,3 +74,4 @@ int main(int ac, char **av)
     file_replace.close();
     return 0;
 }
+
