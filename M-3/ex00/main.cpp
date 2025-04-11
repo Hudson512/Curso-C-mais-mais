@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/11 08:35:43 by hmateque          #+#    #+#             */
-/*   Updated: 2025/03/26 13:20:28 by hmateque         ###   ########.fr       */
+/*   Created: 2025/04/07 09:55:13 by hmateque          #+#    #+#             */
+/*   Updated: 2025/04/10 09:18:25 by hmateque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-# define FIXED_HPP
+#include "ClapTrap.hpp"
 
-# include <iostream>
-
-class Fixed
+int main(void)
 {
-private:
-    int _value;
-    static const int _fractionalBits = 8;
-public:
-    Fixed();
-    Fixed(const Fixed& fixed);
-    Fixed& operator=(const Fixed& fixed);
-    ~Fixed();
-    int getRawBits(void) const;
-    void setRawBits(int const raw);
-};
+    ClapTrap player1;
+    ClapTrap player2("Player2");
+    int defaultRepaired = 3;
+    int defaultAttackDamage = 5;
+    
+    player1.setAttackDamage(defaultAttackDamage);
+    player1.attack(player2.getName());
+    player2.takeDamage(player1.getAttackDamage());
+    player2.beRepaired(defaultRepaired);
+    player2.attack(player1.getName());
 
-
-
-#endif
+    return 0;
+}
