@@ -61,11 +61,13 @@ public:
 
 ```
 A palavra-chave virtual permite o polimorfismo dinâmico: o método chamado será o do tipo real do objeto (ex: Dog), e não o da classe base (Animal).
--- ⚠️ Isso só funciona com ponteiros ou referências da classe base.
+
+⚠️ Isso só funciona com ponteiros ou referências da classe base.
 
 #### 🧠 1. Por que o virtual só é relevante quando usamos ponteiros ou referências?
 🔹 Porque o C++ é uma linguagem estática e compilada
 Quando você faz:
+
 ```cpp
 Animal a = Pig();
 ```
@@ -117,11 +119,16 @@ Pig p;
 playSound(p);  // Polimorfismo verdadeiro
 ```
 #### 🧠 Porque o C++ permite conversão implícita para classe base
-ex: Animal* a = new Pig();
+Ex: 
+```cpp 
+Animal* a = new Pig();
+```
 
 Se Pig herda de Animal, então todo Pig é também um Animal.
-Isso é o conceito de substituição de Liskov:
+Isso é o conceito de substituição de [Liskov](https://pt.wikipedia.org/wiki/Princ%C3%ADpio_da_substitui%C3%A7%C3%A3o_de_Liskov):
+
 “Se S é subtipo de T, então objetos de tipo T podem ser substituídos por objetos de tipo S”.
+
 Logo, isso é válido:
 ```cpp
 Animal* a = new Pig();   // OK
@@ -183,5 +190,5 @@ public:
 };
 ```
 
-### 👨‍💻 Autor
+### 👨‍💻 Autor: Hudson HD
 Este guia foi elaborado como apoio para reforço pessoal de conceitos essenciais do C++ moderno.
