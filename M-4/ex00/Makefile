@@ -1,22 +1,24 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hmateque <hmateque@gmail.com>              +#+  +:+       +#+         #
+#    By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 10:01:40 by hmateque          #+#    #+#              #
-#    Updated: 2025/04/15 19:01:37 by hmateque         ###   ########.fr        #
+#    Updated: 2025/04/22 08:01:01 by hmateque         ###   ########.fr        #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
 
-NAME = Animal
+NAME = Polymorphism
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 SRC =	main.cpp\
 		srcs/Animal.cpp\
 		srcs/Cat.cpp\
 		srcs/Dog.cpp\
+		srcs/WrongAnimal.cpp\
+		srcs/WrongCat.cpp\
 		
 OBJ = $(SRC:.cpp=.o)
 
