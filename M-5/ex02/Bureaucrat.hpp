@@ -6,7 +6,7 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 09:07:33 by hmateque          #+#    #+#             */
-/*   Updated: 2025/07/07 10:27:13 by hmateque         ###   ########.fr       */
+/*   Updated: 2025/07/07 11:29:05 by hmateque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <iostream>
 #include <stdexcept>
 #include <string>
+#include "AForm.hpp"
+
 
 class Bureaucrat
 {
@@ -37,6 +39,10 @@ class Bureaucrat
         // Modifiers
         void incrementGrade();
         void decrementGrade();
+        void signForm(AForm& form) const;
+        void executeForm(const AForm& form) const;
+
+
 
         // Exceptions
         class GradeTooHighException : public std::exception

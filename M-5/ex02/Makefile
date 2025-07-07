@@ -6,7 +6,19 @@
 #    By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/01 09:29:15 by hmateque          #+#    #+#              #
-#    Updated: 2025/07/07 10:35:51 by hmateque         ###   ########.fr        #
+#    Updated: 2025/07/07 11:37:35 by hmateque         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/07/01 09:29:15 by hmateque          #+#    #+#              #
+#    Updated: 2025/07/07 11:34:02 by hmateque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +27,7 @@ NAME = bureaucratForm
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp Bureaucrat.cpp Form.cpp
+SRCS = main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
@@ -35,3 +47,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
