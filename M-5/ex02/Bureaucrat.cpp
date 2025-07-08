@@ -6,11 +6,11 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 09:18:18 by hmateque          #+#    #+#             */
-/*   Updated: 2025/07/07 11:37:28 by hmateque         ###   ########.fr       */
+/*   Updated: 2025/07/08 10:45:13 by hmateque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "./includes/Bureaucrat.hpp"
 
 
 Bureaucrat::Bureaucrat() : name("Default Bureaucrat"), grade(150) {}

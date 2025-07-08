@@ -6,12 +6,12 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 11:15:11 by hmateque          #+#    #+#             */
-/*   Updated: 2025/07/07 11:24:26 by hmateque         ###   ########.fr       */
+/*   Updated: 2025/07/08 10:44:49 by hmateque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ShrubberyCreationForm.hpp"
-#include "Bureaucrat.hpp"
+#include "./includes/ShrubberyCreationForm.hpp"
+#include "./includes/Bureaucrat.hpp"
 #include <iostream>
 #include <fstream>
 
