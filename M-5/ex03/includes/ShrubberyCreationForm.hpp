@@ -19,7 +19,6 @@
 
 class ShrubberyCreationForm : public AForm
 {
-private:
     std::string target;
 
 public:
@@ -29,7 +28,8 @@ public:
     ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
     virtual ~ShrubberyCreationForm();
 
-    void execute(Bureaucrat const& executor) const;
+    void    execute(Bureaucrat const& executor) const;
+    void    createAsciiTree() const;
 };
 
 #endif

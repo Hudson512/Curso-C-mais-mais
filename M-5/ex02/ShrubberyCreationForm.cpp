@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
@@ -6,14 +6,20 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 11:15:11 by hmateque          #+#    #+#             */
-/*   Updated: 2025/07/08 10:44:49 by hmateque         ###   ########.fr       */
+/*   Updated: 2025/10/02 11:57:44 by hmateque         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "./includes/ShrubberyCreationForm.hpp"
 #include "./includes/Bureaucrat.hpp"
 #include <iostream>
 #include <fstream>
+
+/*
+ShrubberyCreationForm: Required grades: sign 145, exec 137
+Creates a file <target>_shrubbery in the working directory and writes ASCII trees
+inside it.
+*/
 
 ShrubberyCreationForm::ShrubberyCreationForm()
     : AForm("ShrubberyCreationForm", 145, 137), target("default") {}
@@ -32,13 +38,8 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-// Execute override
-void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
-    if (!getIsSigned())
-        throw AForm::FormNotSignedException();
-    if (executor.getGrade() > getGradeToExecute())
-        throw AForm::GradeTooLowException();
-
+void ShrubberyCreationForm::createAsciiTree() const
+{
     std::ofstream file((target + "_shrubbery").c_str());
     if (!file) {
         std::cerr << "Error: could not open file." << std::endl;
@@ -53,4 +54,14 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
     file << "      |||\n";
     file << "      |||\n";
     file.close();
+}
+
+
+// Execute override
+void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
+    if (!getIsSigned())
+        throw AForm::FormNotSignedException();
+    if (executor.getGrade() > getGradeToExecute())
+        throw AForm::GradeTooLowException();
+    createAsciiTree();
 }

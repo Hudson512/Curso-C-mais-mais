@@ -14,6 +14,11 @@
 #include "./includes/Bureaucrat.hpp"
 #include <iostream>
 
+/*
+Required grades: sign 25, exec 5
+Informs that <target> has been pardoned by Zaphod Beeblebrox.
+*/
+
 PresidentialPardonForm::PresidentialPardonForm()
     : AForm("PresidentialPardonForm", 25, 5), target("default") {}
 

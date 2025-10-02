@@ -80,7 +80,7 @@ const char *AForm::GradeTooLowException::what() const throw()
 
 const char *AForm::FormNotSignedException::what() const throw()
 {
-    return "Form grade is too low!";
+    return "AForm grade is too low!";
 }
 
 std::ostream &operator<<(std::ostream &os, const AForm &AForm)

@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
@@ -6,15 +6,20 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 09:00:15 by hmateque          #+#    #+#             */
-/*   Updated: 2025/07/08 10:44:42 by hmateque         ###   ########.fr       */
+/*   Updated: 2025/10/02 11:52:00 by hmateque         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "./includes/RobotomyRequestForm.hpp"
 #include "./includes/Bureaucrat.hpp"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+/*
+RobotomyRequestForm: Required grades: sign 72, exec 45
+Makes some drilling noises, then informs that <target> has been robotomized
+successfully 50% of the time. Otherwise, it informs that the robotomy failed.
+*/
 
 RobotomyRequestForm::RobotomyRequestForm()
     : AForm("RobotomyRequestForm", 72, 45), target("Robotomy default") {}
@@ -34,6 +39,13 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
+int RobotomyRequestForm::randomZeroOrOne() const
+{
+    std::srand(std::time(0));
+    return (std::rand() % 2 == 0);
+}
+
+
 void RobotomyRequestForm::execute(const Bureaucrat& executor) const 
 {
     if (!getIsSigned())
@@ -43,9 +55,8 @@ void RobotomyRequestForm::execute(const Bureaucrat& executor) const
 
     std::cout << "BRRRRRRRRRRZzzzzzzzzzz..." << std::endl;
 
-    std::srand(std::time(0)); // Semente para aleatoriedade
 
-    if (std::rand() % 2 == 0) {
+    if (randomZeroOrOne()) {
         std::cout << target << " has been robotomized successfully!" << std::endl;
     } else {
         std::cout << "Robotomy failed on " << target << " ❌💥!" << std::endl;

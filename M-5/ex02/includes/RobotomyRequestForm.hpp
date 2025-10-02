@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 08:59:13 by hmateque          #+#    #+#             */
-/*   Updated: 2025/07/08 08:59:43 by hmateque         ###   ########.fr       */
+/*   Updated: 2025/10/02 11:48:53 by hmateque         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef ROBOTOMYREQUESTFORM_HPP
 #define ROBOTOMYREQUESTFORM_HPP
@@ -16,9 +16,9 @@
 #include "AForm.hpp"
 #include <string>
 
+
 class RobotomyRequestForm : public AForm 
 {
-private:
     std::string target;
 
 public:
@@ -29,6 +29,7 @@ public:
     virtual ~RobotomyRequestForm();
 
     void execute(Bureaucrat const& executor) const;
+    int     randomZeroOrOne() const;
 };
 
 #endif

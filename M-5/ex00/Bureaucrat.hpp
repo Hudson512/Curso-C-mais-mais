@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 09:07:33 by hmateque          #+#    #+#             */
-/*   Updated: 2025/07/07 10:27:13 by hmateque         ###   ########.fr       */
+/*   Updated: 2025/09/26 11:11:01 by hmateque         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
@@ -19,11 +19,11 @@
 
 class Bureaucrat
 {
-    private:
         const std::string name;
         int grade;
         
     public:
+        // Contrutors
         Bureaucrat();
         Bureaucrat(const std::string &name, int grade);
         Bureaucrat(const Bureaucrat &other);

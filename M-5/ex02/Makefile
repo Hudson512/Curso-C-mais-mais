@@ -27,6 +27,7 @@ NAME = bureaucratForm
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
+HEADERS = ./includes/AForm.hpp ./includes/Bureaucrat.hpp ./includes/PresidentialPardonForm.hpp ./includes/RobotomyRequestForm.hpp ./includes/ShrubberyCreationForm.hpp
 SRCS = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 OBJS = $(SRCS:.cpp=.o)
 
@@ -35,7 +36,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
-%.o: %.cpp
+%.o: %.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:

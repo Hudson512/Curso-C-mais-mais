@@ -15,6 +15,11 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+/*
+RobotomyRequestForm: Required grades: sign 72, exec 45
+Makes some drilling noises, then informs that <target> has been robotomized
+successfully 50% of the time. Otherwise, it informs that the robotomy failed.
+*/
 
 RobotomyRequestForm::RobotomyRequestForm()
     : AForm("RobotomyRequestForm", 72, 45), target("Robotomy default") {}
@@ -34,6 +39,13 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
+int RobotomyRequestForm::randomZeroOrOne() const
+{
+    std::srand(std::time(0));
+    return (std::rand() % 2 == 0);
+}
+
+
 void RobotomyRequestForm::execute(const Bureaucrat& executor) const 
 {
     if (!getIsSigned())
@@ -43,9 +55,8 @@ void RobotomyRequestForm::execute(const Bureaucrat& executor) const
 
     std::cout << "BRRRRRRRRRRZzzzzzzzzzz..." << std::endl;
 
-    std::srand(std::time(0)); // Semente para aleatoriedade
 
-    if (std::rand() % 2 == 0) {
+    if (randomZeroOrOne()) {
         std::cout << target << " has been robotomized successfully!" << std::endl;
     } else {
         std::cout << "Robotomy failed on " << target << " ❌💥!" << std::endl;

@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 10:57:21 by hmateque          #+#    #+#             */
-/*   Updated: 2025/07/08 08:59:34 by hmateque         ###   ########.fr       */
+/*   Updated: 2025/10/02 11:55:21 by hmateque         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef SHRUBBERYCREATIONFORM_HPP
 #define SHRUBBERYCREATIONFORM_HPP
@@ -19,7 +19,6 @@
 
 class ShrubberyCreationForm : public AForm
 {
-private:
     std::string target;
 
 public:
@@ -29,7 +28,8 @@ public:
     ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
     virtual ~ShrubberyCreationForm();
 
-    void execute(Bureaucrat const& executor) const;
+    void    execute(Bureaucrat const& executor) const;
+    void    createAsciiTree() const;
 };
 
 #endif

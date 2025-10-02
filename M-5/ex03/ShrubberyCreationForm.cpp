@@ -15,6 +15,12 @@
 #include <iostream>
 #include <fstream>
 
+/*
+ShrubberyCreationForm: Required grades: sign 145, exec 137
+Creates a file <target>_shrubbery in the working directory and writes ASCII trees
+inside it.
+*/
+
 ShrubberyCreationForm::ShrubberyCreationForm()
     : AForm("ShrubberyCreationForm", 145, 137), target("default") {}
 
@@ -32,13 +38,8 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-// Execute override
-void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
-    if (!getIsSigned())
-        throw AForm::FormNotSignedException();
-    if (executor.getGrade() > getGradeToExecute())
-        throw AForm::GradeTooLowException();
-
+void ShrubberyCreationForm::createAsciiTree() const
+{
     std::ofstream file((target + "_shrubbery").c_str());
     if (!file) {
         std::cerr << "Error: could not open file." << std::endl;
@@ -53,4 +54,14 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
     file << "      |||\n";
     file << "      |||\n";
     file.close();
+}
+
+
+// Execute override
+void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
+    if (!getIsSigned())
+        throw AForm::FormNotSignedException();
+    if (executor.getGrade() > getGradeToExecute())
+        throw AForm::GradeTooLowException();
+    createAsciiTree();
 }

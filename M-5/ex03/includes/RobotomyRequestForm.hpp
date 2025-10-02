@@ -16,9 +16,9 @@
 #include "AForm.hpp"
 #include <string>
 
+
 class RobotomyRequestForm : public AForm 
 {
-private:
     std::string target;
 
 public:
@@ -29,6 +29,7 @@ public:
     virtual ~RobotomyRequestForm();
 
     void execute(Bureaucrat const& executor) const;
+    int     randomZeroOrOne() const;
 };
 
 #endif
