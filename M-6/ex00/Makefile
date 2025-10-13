@@ -6,7 +6,7 @@
 #    By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/08 12:35:46 by hmateque          #+#    #+#              #
-#    Updated: 2025/10/08 12:40:58 by hmateque         ###   ########.fr        #
+#    Updated: 2025/10/13 11:43:10 by hmateque         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,7 +16,7 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 HEARDERS = ScalarConverter.hpp
-SRCS = ScalarConverter.cpp
+SRCS = ScalarConverter.cpp main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
