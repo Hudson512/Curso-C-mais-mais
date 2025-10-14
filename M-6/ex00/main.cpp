@@ -15,11 +15,12 @@
 
 int main(int ac, char *av[])
 {
-    ScalarConverter::convert("'a'");
-    ScalarConverter::convert("42");
-    ScalarConverter::convert("3.14f");
-    ScalarConverter::convert("3.14");
-    ScalarConverter::convert("nanf");
-    ScalarConverter::convert("-inf");
+
+    if (ac != 2)
+    {
+        std::cerr << "Usage: ./scalar_converter <literal_value>" << std::endl;
+        return 1;
+    }
+    ScalarConverter::convert(av[1]);
     return 0;
 }

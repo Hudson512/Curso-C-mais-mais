@@ -15,8 +15,26 @@
 
 #include <iostream>
 #include <string>
-#include <cctype>
+#include <sstream>
 #include <limits>
+#include <cstdlib>
+#include <cmath>
+
+/*
+INT_MAX: 2147483647
+INT_MIN: -2147483648
+*/
+struct ScalarConverterData
+{
+    int intValue;
+    float floatValue;
+    double doubleValue;
+    std::string charValue;
+    int error;
+    char *end;
+    int special;
+};
+
 
 class ScalarConverter
 {
@@ -24,65 +42,15 @@ class ScalarConverter
         ScalarConverter(const ScalarConverter &other);
         ScalarConverter &operator=(const ScalarConverter &other);
         ~ScalarConverter();
-        // --------------------------------------------------------// 
-        static bool isChar(const std::string &s) {
-            return s.length() == 3 && s.front() == '\'' && s.back() == '\'';
-        }
-
-        static bool isInt(const std::string &s) {
-            size_t i = 0;
-            if (s[i] == '+' || s[i] == '-') i++;
-            for (; i < s.size(); i++) {
-                if (!isdigit(s[i])) return false;
-            }
-            return true;
-        }
-
-        static bool isFloat(const std::string &s) {
-            if (s == "nanf" || s == "+inff" || s == "-inff") return true;
-            if (s.back() != 'f') return false;
-            return s.find('.') != std::string::npos;
-        }
-
-        static bool isDouble(const std::string &s) {
-            if (s == "nan" || s == "+inf" || s == "-inf") return true;
-            return s.find('.') != std::string::npos && s.back() != 'f';
-        }
-
-        // ---------- CONVERSÃO ----------
-        static void handleChar(const std::string &s) {
-            char c = s[1];
-            std::cout << "Detectado tipo: char → valor: '" << c << "' (" << (int)c << ")\n";
-        }
-
-        static void handleInt(const std::string &s) {
-            try {
-                int n = std::stoi(s);
-                std::cout << "Detectado tipo: int → valor: " << n << "\n";
-            } catch (...) {
-                std::cout << "Erro ao converter para int\n";
-            }
-        }
-
-        static void handleFloat(const std::string &s) {
-            try {
-                float f = std::stof(s);
-                std::cout << "Detectado tipo: float → valor: " << f << "f\n";
-            } catch (...) {
-                std::cout << "Erro ao converter para float\n";
-            }
-        }
-
-        static void handleDouble(const std::string &s) {
-            try {
-                double d = std::stod(s);
-                std::cout << "Detectado tipo: double → valor: " << d << "\n";
-            } catch (...) {
-                std::cout << "Erro ao converter para double\n";
-            }
-        }
+        static int convert_int(const std::string &literal);
+        static float convert_float(const std::string &literal);
+        static double convert_double(const std::string &literal);
+        static char convert_char(const std::string &literal);
+        static int check_error(const std::string &literal);
+        static void print_data(ScalarConverterData data);
+        static void print_impossible(int intCase);
     public:
-        static void convert(const std::string literal);
+        static void convert(const char *literal);
 };
 
 #endif
