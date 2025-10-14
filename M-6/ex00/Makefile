@@ -13,7 +13,7 @@
 NAME = convert
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra  -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 HEARDERS = ScalarConverter.hpp
 SRCS = ScalarConverter.cpp main.cpp

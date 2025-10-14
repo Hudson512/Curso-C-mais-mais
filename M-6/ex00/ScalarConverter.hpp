@@ -42,12 +42,7 @@ class ScalarConverter
         ScalarConverter(const ScalarConverter &other);
         ScalarConverter &operator=(const ScalarConverter &other);
         ~ScalarConverter();
-        static int convert_int(const std::string &literal);
-        static float convert_float(const std::string &literal);
-        static double convert_double(const std::string &literal);
-        static char convert_char(const std::string &literal);
-        static int check_error(const std::string &literal);
-        static void print_data(ScalarConverterData data);
+        
         static void print_impossible(int intCase);
     public:
         static void convert(const char *literal);
