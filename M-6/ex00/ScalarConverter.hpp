@@ -19,6 +19,8 @@
 #include <limits>
 #include <cstdlib>
 #include <cmath>
+#include <cstring>
+#include <iomanip>
 
 /*
 INT_MAX: 2147483647
@@ -30,9 +32,7 @@ struct ScalarConverterData
     float floatValue;
     double doubleValue;
     std::string charValue;
-    int error;
     char *end;
-    int special;
 };
 
 
@@ -44,6 +44,7 @@ class ScalarConverter
         ~ScalarConverter();
         
         static void print_impossible(int intCase);
+        static void printConversions(double doubleValue);
     public:
         static void convert(const char *literal);
 };

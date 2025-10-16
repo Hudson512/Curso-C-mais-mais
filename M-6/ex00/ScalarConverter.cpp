@@ -12,6 +12,7 @@
 
 #include "ScalarConverter.hpp"
 
+
 ScalarConverter::ScalarConverter(){/*construturo default*/ }
 
 ScalarConverter::ScalarConverter(const ScalarConverter &other)
@@ -58,6 +59,32 @@ void ScalarConverter::print_impossible(int intCase)
     
 }
 
+void ScalarConverter::printConversions(double doubleValue)
+{
+    // char
+    if (std::isprint(static_cast<char>(doubleValue)))
+        std::cout << "char: '" << static_cast<char>(doubleValue) << "'" << std::endl;
+    else if (doubleValue < std::numeric_limits<char>::min() || doubleValue > std::numeric_limits<char>::max())
+        std::cout << "char: impossible" << std::endl;
+    else
+        std::cout << "char: Não exibível" << std::endl;
+
+    // int
+    if (doubleValue >= static_cast<double>(std::numeric_limits<int>::min()) &&
+        doubleValue <= static_cast<double>(std::numeric_limits<int>::max()))
+        std::cout << "int: " << static_cast<int>(doubleValue) << std::endl;
+    else
+        std::cout << "int: impossivel" << std::endl;
+
+    // float
+    std::cout << std::fixed << std::setprecision(1) << "float: " << static_cast<float>(doubleValue);
+    std::cout << "f" << std::endl;
+
+    // double
+    std::cout << std::fixed << std::setprecision(1) << "double: " << doubleValue;
+    std::cout << std::endl;
+}
+
 void ScalarConverter::convert(const char *literal)
 {
     ScalarConverterData data;
@@ -68,7 +95,6 @@ void ScalarConverter::convert(const char *literal)
         str == "+inf" || str == "+inff" ||
         str == "-inf" || str == "-inff")
     {
-        data.special = 1;
         data.doubleValue = std::strtod(literal, &data.end);
         data.floatValue = static_cast<float>(data.doubleValue);
         std::cout << "char: impossivel" << std::endl;
@@ -79,40 +105,18 @@ void ScalarConverter::convert(const char *literal)
     }
 
     // 2. Tenta converter para double
-    char *endptr = NULL;
-    double doubleValue = std::strtod(literal, &endptr);
-    // Verifica se a string foi totalmente convertida e não está vazia
-    if ((endptr != literal && *endptr == '\0') ||
-        (endptr != literal && *endptr == 'f' && *(endptr + 1) == '\0'))
+    double doubleValue = std::strtod(literal, &data.end);
+    if ((data.end != literal && *data.end == '\0') ||
+        (data.end != literal && *data.end == 'f' && *(data.end + 1) == '\0'))
     {
-        
-        // char
-        if (doubleValue >= 32 && doubleValue <= 126)
-            std::cout << "char: '" << static_cast<char>(doubleValue) << "'" << std::endl;
-        else
-            std::cout << "char: Não exibível" << std::endl;
-
-        // int
-        if (doubleValue >= static_cast<double>(std::numeric_limits<int>::min()) &&
-            doubleValue <= static_cast<double>(std::numeric_limits<int>::max()))
-            std::cout << "int: " << static_cast<int>(doubleValue) << std::endl;
-        else
-            std::cout << "int: impossivel" << std::endl;
-
-        // float
-        std::cout << "float: " << static_cast<float>(doubleValue);
-        if (doubleValue == static_cast<int>(doubleValue))
-            std::cout << ".0";
-        std::cout << "f" << std::endl;
-
-        // double
-        std::cout << "double: " << doubleValue;
-        if (doubleValue == static_cast<int>(doubleValue))
-            std::cout << ".0";
-        std::cout << std::endl;
-
+        if (str.length() > 1 && str[0] == ' ') {
+            print_impossible(0);
+            return;
+        }
+        printConversions(doubleValue);
         return;
     }
+
 
     // 3. Tenta converter para char (um único caractere não numérico)
     if (str.length() == 1 && !std::isdigit(str[0]))
