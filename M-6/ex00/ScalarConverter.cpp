@@ -17,7 +17,6 @@ ScalarConverter::ScalarConverter(){/*construturo default*/ }
 
 ScalarConverter::ScalarConverter(const ScalarConverter &other)
 {
-    /*construturo copia*/
     (void)other;
 }
 
@@ -25,38 +24,17 @@ ScalarConverter::~ScalarConverter(){/*Destrutor*/}
 
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 {
-    /*Subrecarga de atribuicao*/
     (void)other;
     return *this;
 }
 
 
-
-void ScalarConverter::print_impossible(int intCase)
+void ScalarConverter::print_impossible()
 {
-    switch (intCase)
-    {
-    case 1:
-        std::cout << "char: " << "impossivel" << std::endl;
-        break;
-    case 2:
-        std::cout << "int: " << "impossivel" << std::endl;
-        break;
-    case 3:
-        std::cout << "float: " << "impossivel" << std::endl;
-        break;
-    case 4:
-        std::cout << "double: " << "impossivel" << std::endl;
-        break;
-    
-    default:
-        std::cout << "char: " << "impossivel" << std::endl;
-        std::cout << "int: " << "impossivel" << std::endl;
-        std::cout << "float: " << "impossivel" << std::endl;
-        std::cout << "double: " << "impossivel" << std::endl;
-        break;
-    }
-    
+    std::cout << "char: " << "impossivel" << std::endl;
+    std::cout << "int: " << "impossivel" << std::endl;
+    std::cout << "float: " << "impossivel" << std::endl;
+    std::cout << "double: " << "impossivel" << std::endl;
 }
 
 void ScalarConverter::printConversions(double doubleValue)
@@ -64,7 +42,7 @@ void ScalarConverter::printConversions(double doubleValue)
     // char
     if (std::isprint(static_cast<char>(doubleValue)))
         std::cout << "char: '" << static_cast<char>(doubleValue) << "'" << std::endl;
-    else if (doubleValue < std::numeric_limits<char>::min() || doubleValue > std::numeric_limits<char>::max())
+    else if (doubleValue < 0 || doubleValue > 127)
         std::cout << "char: impossible" << std::endl;
     else
         std::cout << "char: Não exibível" << std::endl;
@@ -110,13 +88,12 @@ void ScalarConverter::convert(const char *literal)
         (data.end != literal && *data.end == 'f' && *(data.end + 1) == '\0'))
     {
         if (str.length() > 1 && str[0] == ' ') {
-            print_impossible(0);
+            print_impossible();
             return;
         }
         printConversions(doubleValue);
         return;
     }
-
 
     // 3. Tenta converter para char (um único caractere não numérico)
     if (str.length() == 1 && !std::isdigit(str[0]))
@@ -130,6 +107,6 @@ void ScalarConverter::convert(const char *literal)
     }
 
     // Se não passou em nenhum teste, é inválido
-    print_impossible(0);
+    print_impossible();
 }
 

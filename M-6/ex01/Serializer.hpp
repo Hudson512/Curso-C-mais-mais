@@ -1,46 +1,40 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 12:41:07 by hmateque          #+#    #+#             */
-/*   Updated: 2025/10/20 12:40:46 by hmateque         ###   ########.fr       */
+/*   Updated: 2025/10/20 12:05:13 by hmateque         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef SCALAR_CONVERTER_HPP
-# define  SCALAR_CONVERTER_HPP
+#ifndef SERIALIZER_HPP
+# define SERIALIZER_HPP
 
 #include <iostream>
 #include <string>
-#include <sstream>
-#include <limits>
-#include <cstdlib>
-#include <cmath>
-#include <cstring>
-#include <iomanip>
+#include <stdint.h>
 
-struct ScalarConverterData
+struct Data
 {
-    float floatValue;
-    double doubleValue;
-    char *end;
+    int         id;
+    std::string name;
+    float       value;
 };
 
-
-class ScalarConverter
+class Serializer
 {
-        ScalarConverter();
-        ScalarConverter(const ScalarConverter &other);
-        ScalarConverter &operator=(const ScalarConverter &other);
-        ~ScalarConverter();
-        
-        static void print_impossible();
-        static void printConversions(double doubleValue);
+        Serializer();
+        Serializer(const Serializer &other);
+        Serializer &operator=(const Serializer &other);
+        ~Serializer();
+
     public:
-        static void convert(const char *literal);
-};
+        static uintptr_t serialize(Data* ptr);
+        static Data* deserialize(uintptr_t raw);
+};  
+
 
 #endif
