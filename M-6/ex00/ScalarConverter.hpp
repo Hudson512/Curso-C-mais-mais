@@ -6,7 +6,7 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 12:41:07 by hmateque          #+#    #+#             */
-/*   Updated: 2025/10/20 12:40:46 by hmateque         ###   ########.fr       */
+/*   Updated: 2025/10/22 09:46:13 by hmateque         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -21,6 +21,7 @@
 #include <cmath>
 #include <cstring>
 #include <iomanip>
+#include <cerrno> 
 
 struct ScalarConverterData
 {

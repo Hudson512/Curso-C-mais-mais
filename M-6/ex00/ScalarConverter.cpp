@@ -6,7 +6,7 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 10:12:17 by hmateque          #+#    #+#             */
-/*   Updated: 2025/10/13 11:36:58 by hmateque         ###   ########.fr       */
+/*   Updated: 2025/10/22 09:52:35 by hmateque         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -67,6 +67,7 @@ void ScalarConverter::convert(const char *literal)
 {
     ScalarConverterData data;
     std::string str(literal);
+    errno = 0;
 
     // 1. Verifica se é valor especial (nan, inf, etc)
     if (str == "nan" || str == "nanf" ||
@@ -84,6 +85,11 @@ void ScalarConverter::convert(const char *literal)
 
     // 2. Tenta converter para double
     double doubleValue = std::strtod(literal, &data.end);
+    if (errno == ERANGE || data.doubleValue == HUGE_VAL || data.doubleValue == -HUGE_VAL) 
+    {
+        print_impossible();  
+        return ;
+    }
     if ((data.end != literal && *data.end == '\0') ||
         (data.end != literal && *data.end == 'f' && *(data.end + 1) == '\0'))
     {
