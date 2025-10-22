@@ -1,22 +1,16 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   Base.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/21 09:56:44 by hmateque          #+#    #+#             */
-/*   Updated: 2025/10/22 10:46:20 by hmateque         ###   ########.fr       */
+/*   Created: 2025/10/22 10:45:47 by hmateque          #+#    #+#             */
+/*   Updated: 2025/10/22 10:46:11 by hmateque         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef BASE_HPP
-#define BASE_HPP
 
-class Base
-{
-public:
-    virtual ~Base();
-};
+#include "includes/Base.hpp"
 
-#endif
+Base::~Base(){}
