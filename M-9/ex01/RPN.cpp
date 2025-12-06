@@ -6,7 +6,7 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 10:53:25 by hmateque          #+#    #+#             */
-/*   Updated: 2025/12/06 12:34:52 by hmateque         ###   ########.fr       */
+/*   Updated: 2025/12/06 13:31:20 by hmateque         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -36,7 +36,7 @@ int RPN::evaluate(const std::string &expression)
     while (iss >> token)
     {
         // DEBUG
-        std::cout << "Token: " << token << std::endl;
+        //std::cout << "Token: " << token << std::endl;
         // Numeros negativos sao considerados
         char *endptr;
         long val = std::strtol(token.c_str(), &endptr, 10);
@@ -58,17 +58,17 @@ int RPN::evaluate(const std::string &expression)
 
             if (token == "+")
             {
-                std::cout << "Adding " << a << " + " << b << std::endl;
+                //std::cout << "Adding " << a << " + " << b << std::endl;
                 result = a + b;
             }
             else if (token == "-")
             {
-                std::cout << "Subtracting " << a << " - " << b << std::endl;
+                //std::cout << "Subtracting " << a << " - " << b << std::endl;
                 result = a - b;
             }
             else if (token == "*") 
             {
-                std::cout << "Multiplying " << a << " * " << b << std::endl;
+                //std::cout << "Multiplying " << a << " * " << b << std::endl;
                 result = a * b;
             }
             else // token == "/"
@@ -84,6 +84,7 @@ int RPN::evaluate(const std::string &expression)
         {
             throw std::runtime_error("Error: Invalid token '" + token + "'.");
         }
+        /*
         std::stack<int> debugStack = stack;
         std::cout << "Stack contents (top to bottom): ";
         while (!debugStack.empty())
@@ -92,8 +93,9 @@ int RPN::evaluate(const std::string &expression)
             debugStack.pop();
         }
         std::cout << std::endl;
+        */
     }
-    std::cout << "Final stack size: " << stack.size() << std::endl;
+    //std::cout << "Final stack size: " << stack.size() << std::endl;
     if (stack.size() == 1)
         return stack.top();
     else

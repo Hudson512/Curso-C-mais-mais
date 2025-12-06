@@ -6,7 +6,7 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 10:46:19 by hmateque          #+#    #+#             */
-/*   Updated: 2025/12/06 12:28:22 by hmateque         ###   ########.fr       */
+/*   Updated: 2025/12/06 13:25:35 by hmateque         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -24,13 +24,12 @@
 class RPN
 {
     private:
+        RPN();
         RPN(const RPN &other);
         RPN &operator=(const RPN &other);
-
-    public:
-        RPN();
         ~RPN();
 
+    public:
         static int evaluate(const std::string &expression);
 };
 
