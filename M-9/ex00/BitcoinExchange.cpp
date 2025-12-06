@@ -6,7 +6,7 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:25:50 by hmateque          #+#    #+#             */
-/*   Updated: 2025/12/04 18:14:53 by hmateque         ###   ########.fr       */
+/*   Updated: 2025/12/06 10:42:40 by hmateque         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -236,6 +236,6 @@ time_t BitcoinExchange::stringToTimeT(const std::string &dateStr) const
 bool BitcoinExchange::hasExtension(const std::string &filename, const std::string &ext) const {
     size_t pos = filename.find_last_of(".");
     if (pos == std::string::npos) return false;
-    return filename.substr(pos + 1) == ext;
+    return filename.substr(pos + 1) == ext || filename.substr(pos + 1) == "csv";
 }
 
