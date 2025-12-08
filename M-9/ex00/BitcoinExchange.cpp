@@ -6,7 +6,7 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 10:25:50 by hmateque          #+#    #+#             */
-/*   Updated: 2025/12/06 10:42:40 by hmateque         ###   ########.fr       */
+/*   Updated: 2025/12/08 16:11:10 by hmateque         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -57,6 +57,9 @@ void BitcoinExchange::loadDatabase(const std::string &filename)
     }
 }
 
+
+
+
 // process input file
 void BitcoinExchange::processInputFile(const std::string &filename) const
 {
@@ -76,6 +79,11 @@ void BitcoinExchange::processInputFile(const std::string &filename) const
 
     std::string line;
     std::getline(file, line);
+    if (check_head(line) != 0)
+    {
+        std::cerr << "Error: Invalid header detected." << std::endl;
+        return;
+    }
     while (std::getline(file, line))
     {
 
@@ -122,6 +130,7 @@ void BitcoinExchange::processInputFile(const std::string &filename) const
         }
         if (it == _db.end() || it->first != inputDate)
             --it;
+        //std::cout << "Data capturada: " << timeTToString(it->first) << std::endl;
         float rate = stringToFloat(it->second);
 
         // Calcular o valor em Bitcoin
@@ -137,15 +146,19 @@ void BitcoinExchange::processInputFile(const std::string &filename) const
 // Parse line into date and value
 int BitcoinExchange::parseLine(const std::string &line, std::string &dateStr, std::string &valueStr) const
 {
-    size_t pipePos = line.find(" | ");
+    std::string processedLine = line;
+
+    processedLine.erase(std::remove_if(processedLine.begin(), processedLine.end(), ::isspace), processedLine.end());
+    size_t pipePos = processedLine.find('|');
+
     if (pipePos == std::string::npos ||
-        pipePos == 0 || pipePos == line.length() - 3)
+        pipePos == 0 ||                 
+        pipePos == processedLine.length() - 1)
     {
         return -1;
     }
-
-    dateStr = line.substr(0, pipePos);
-    valueStr = line.substr(pipePos + 3);
+    dateStr = processedLine.substr(0, pipePos);
+    valueStr = processedLine.substr(pipePos + 1);
     return 0;
 }
 
@@ -239,3 +252,39 @@ bool BitcoinExchange::hasExtension(const std::string &filename, const std::strin
     return filename.substr(pos + 1) == ext || filename.substr(pos + 1) == "csv";
 }
 
+// Convert time_t to string
+std::string BitcoinExchange::timeTToString(const time_t &raw_time) const
+{
+    struct tm *tm_info = localtime(&raw_time);
+
+    if (tm_info == NULL)
+    {
+        throw std::runtime_error("Error converting time_t to struct tm using localtime.");
+    }
+
+    char buffer[11]; 
+    size_t written = strftime(buffer, sizeof(buffer), "%Y-%m-%d", tm_info);
+    if (written == 0)
+    {
+        throw std::runtime_error("Error formatting time_t to string: strftime failed.");
+    }
+    return std::string(buffer);
+}
+
+// check head
+int BitcoinExchange::check_head(const std::string line) const
+{
+    std::string processedLine = line;
+
+    processedLine.erase(std::remove_if(processedLine.begin(), processedLine.end(), ::isspace), processedLine.end());
+
+
+    if (processedLine == "date|value")
+    {
+        return 0; 
+    }
+    else
+    {
+        return -1;
+    }
+}
